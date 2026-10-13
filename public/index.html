@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="description" content="Create and share text pastes with optional expiry and view limits.">
+  <title>Pastebin-Lite — Share text simply</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="Pastebin-Lite home">
+      <span class="brand-mark">P</span>
+      <span>Pastebin<span class="brand-muted">-Lite</span></span>
+    </a>
+    <span class="status"><span class="status-dot"></span> Simple. Secure. Shareable.</span>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <p class="eyebrow">TEXT SHARING, SIMPLIFIED</p>
+      <h1>Your text.<br><span>Your link.</span></h1>
+      <p class="hero-copy">
+        Create a paste in seconds. Set an expiry time or view limit,
+        then share it with anyone.
+      </p>
+    </section>
+
+    <section class="panel" aria-labelledby="create-heading">
+      <div class="panel-heading">
+        <div>
+          <p class="section-label">NEW PASTE</p>
+          <h2 id="create-heading">Create a paste</h2>
+        </div>
+        <span class="step-label">01 / CREATE</span>
+      </div>
+
+      <form id="paste-form">
+        <label for="content">Your content <span class="required">*</span></label>
+        <textarea
+          id="content"
+          name="content"
+          placeholder="Write or paste your text here..."
+          rows="9"
+          required
+        ></textarea>
+        <div class="field-foot">
+          <span>Plain text is supported</span>
+          <span id="char-count">0 characters</span>
+        </div>
+
+        <div class="options-grid">
+          <div class="field">
+            <label for="ttl-seconds">Expiry time <span class="optional">(optional)</span></label>
+            <select id="ttl-seconds" name="ttl_seconds">
+              <option value="">Never expires</option>
+              <option value="60">1 minute</option>
+              <option value="300">5 minutes</option>
+              <option value="3600">1 hour</option>
+              <option value="86400">24 hours</option>
+              <option value="604800">7 days</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="max-views">Maximum views <span class="optional">(optional)</span></label>
+            <input
+              id="max-views"
+              name="max_views"
+              type="number"
+              min="1"
+              step="1"
+              placeholder="Unlimited"
+            >
+          </div>
+        </div>
+
+        <p class="hint">A paste becomes unavailable when its expiry time or view limit is reached.</p>
+
+        <div id="form-error" class="message error" role="alert" hidden></div>
+
+        <button id="create-button" class="primary-button" type="submit">
+          Create paste <span aria-hidden="true">→</span>
+        </button>
+      </form>
+
+      <section id="result-panel" class="result-panel" aria-live="polite" hidden>
+        <div class="success-heading">
+          <span class="success-icon" aria-hidden="true">✓</span>
+          <div>
+            <h3>Paste created</h3>
+            <p>Your share link is ready.</p>
+          </div>
+        </div>
+        <label for="share-url">Shareable link</label>
+        <div class="share-row">
+          <input id="share-url" type="url" readonly>
+          <button id="copy-button" class="secondary-button" type="button">Copy link</button>
+        </div>
+        <a id="open-paste" class="open-link" href="#">Open paste ↗</a>
+        <p id="copy-status" class="hint" role="status"></p>
+      </section>
+    </section>
+
+    <section class="info-row">
+      <article class="info-card">
+        <span class="info-icon" aria-hidden="true">⌁</span>
+        <h3>Easy to share</h3>
+        <p>One link gives others access to your text.</p>
+      </article>
+      <article class="info-card">
+        <span class="info-icon" aria-hidden="true">◷</span>
+        <h3>Control access</h3>
+        <p>Choose when a paste expires or how many times it can be viewed.</p>
+      </article>
+      <article class="info-card">
+        <span class="info-icon" aria-hidden="true">Aa</span>
+        <h3>Plain text</h3>
+        <p>Your content is displayed as text, not executed as code.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>Pastebin-Lite</span>
+    <span>Small text. Simple sharing.</span>
+  </footer>
+</body>
+</html>
